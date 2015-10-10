@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta content="yes" name="apple-mobile-web-app-capable" />
-  <meta content="yes" name="apple-touch-fullscreen" />
   <meta content="telephone=no,email=no" name="format-detection" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<!-- <meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="Cache-Control" content="no-cache, must-revalidate"> -->
 	<!-- UC强制全屏 -->
@@ -19,7 +18,6 @@
 	<meta http-equiv="pragma" content="no-cache">
 	<title>canon</title>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
-	<script type="text/javascript" src="js/flexible.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="css/css.css">
 
@@ -52,9 +50,9 @@
 		<div class="page6-shadow"></div>
 		<div class="page6-people"></div>
 		<div class="page6-shadow2"></div>
-		<div class="page6-flower"></div>
+		<!-- <div class="page6-flower"></div> -->
 	</div>
-	<div class="page page7 page7-photo" id="page7">
+	<div class="page page7 page7-photo hide" id="page7">
 		<div class="page7-tree"></div>
 		<div class="page7-people"></div>
 	</div>
@@ -62,6 +60,20 @@
 		<div class="page8-photo1"></div>
 		<div class="page8-photo2"></div>
 		<div class="page8-photo3"></div>
+	</div>
+	<div class="page page10 " id="page10">
+		<div class="page10-title">选择上传一张照片体验打印的乐趣吧！<br/>更有精美礼品等着你！</div>
+		<div class="page10-btn">
+			拍照或从相册选择
+			<input type="file" name="mfile" id="sPhoto"  accept="image/*;capture=camera" />
+		</div>
+		<div class="page1-printer-top"></div>
+		<div class="page10-photo">
+			<canvas></canvas>
+		</div>
+	</div>
+	<div class="page page11 hide" id="page11">
+
 	</div>
 	<script src="js/app.js"></script>   
 </body>
