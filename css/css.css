@@ -721,19 +721,44 @@ html,body{
 .page9 {
 	background: url(../images/page9-bg.jpg) 0 50% no-repeat;
 	background-size: 100% 100%;
-	/*transform: translate3d(0,-400%,0);*/
+	transform: translate3d(0,-400%,0);
 /*	transition: transform 2s;
 	-webkit-transition: transform 2s;*/
 	/*opacity:0;*/
 }
-.page9 .page2-book-bookmark2{
-	top: 2.4%;
-  left: 1%;
+.page9 .page9-book{
+	top: 44%;
+	left: 5.3%;
+	width: 63.67%;
+	height: 51.2%;
+	position: absolute;
+	background: url(../images/page9-book.png) 0 50% no-repeat;
+	background-size: 100% 100%;
+	-webkit-animation: page9-book 3s ease-in forwards;
+	animation: page9-book 3s ease-in forwards;
+	z-index: 9;
+	opacity: 0;
 }
-
+@keyframes page9-book{
+	0% {
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+@-webkit-keyframes page9-book{
+	0% {
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
 .page10 {
 	background: url(../images/page10-bg.jpg) no-repeat;
 	background-size: 100% 100%;
+	transform: translate3d(0,-400%,0);
 	position: relative;
 }
 .page10 .page10-title{
@@ -766,8 +791,10 @@ html,body{
 .page10 .page10-btn input{
 	position: absolute;
 	display: block;
-	width: 100%;
-	height: 12.7rem;
+	height: 3.133rem;
+	width: 12.7rem;
+	right: 0;
+    top: 0;
 	opacity: 0;
 	z-index: 999;
 }
@@ -793,7 +820,7 @@ html,body{
 }
 .page10-tip-close{
 	height: 5.332%;
-	width: 8.8932%;
+	width: 7.8932%;
 	position: absolute;
 	bottom: 2%;
 	right: 3%;
@@ -801,15 +828,16 @@ html,body{
 	background-size: 100% 100%;
 	z-index: 1002
 }
-.page10-tip-box .page-tip-text {
+.page10-tip-box .page10-tip-text {
 	position: absolute;
-	top: 10rem;
-	left: 1rem;
-	color: #fff;
-	font-size: 1.25rem;
+	width: 53.5%;
+	height: 75.7%;
+	top: 7%;
+	left: 50%;
+	margin-left: -26.75%;
+	background: url(../images/page10-tip-text.png) no-repeat;
+	background-size: 100% 100%;
 	z-index: 1001;
-	transform:rotate(90deg);
-	-webkit-transform:rotate(90deg);
 }
 .page10-tip-box .page-tip-text p{
 	width: 130%;
@@ -842,3 +870,24 @@ html,body{
 	0% {-webkit-transform: rotateX(0) rotateY(48deg) rotateZ(-38deg) translate(0.22875rem,1.14375rem);}
 	100% {-webkit-transform: rotateX(0) rotateY(48deg) rotateZ(-38deg) translate(0,0);}
 }
+
+.page11{
+	background: url(../images/page11-bg.jpg) 0 50% no-repeat;
+	background-size: 100% 100%;
+	transform: translate3d(0,-400%,0);
+ 	perspective: 1000;
+	-webkit-perspective: 1000;
+}
+.page11 .page11-photo{
+	width:54%;
+	height:38%;
+	background: url(../images/page11-bg.jpg) 0 50% no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	left: 25%;
+	top: 56%;
+	border: 2px solid #bfae83;
+	transform: rotateX(50deg) rotateY(34deg) ;
+	
+}
+

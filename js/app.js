@@ -11,28 +11,41 @@
         page7: $("#page7"),
         page8: $("#page8"),
         page9: $("#page9"),
+        page9book: $("#page9Book"),
         page10: $("#page10"),
         page10Input: $("#sPhoto"),
         page10Img: $("#page10-photo"),
         page10tip: $(".page10-tip"),
         page10tipbox: $(".page10-tip-box"),
         page10tipbg: $(".page10-tip-bg"),
+        page10close: $(".page10-tip-close"),
 	},
 
 	app = {
 		init: function() {      
             this.initEvent();   
-            // this.loading();   
+            this.loading();   
             // this.render();  
         },
-        loading: function() {   
-            function a() {      
-                d++, d == 5 && app.render();
-            }
-            for (var b = ["images/page1-bg.jpg", "images/page1-printer-top.png", "images/page1-printer-photo.png", "images/page1-percent.png"], c = b.length, d = 0, e = 0; c > e; e++) {
-                var g = new Image();
-                g.onload = a;
-                g.src = b[e];
+        loading: function() {
+            var _this = this; 
+            var imgsrc = ['page1-bg.jpg','page2-bg.jpg','page3-bg.jpg','page4-bg.jpg','page5-bg.jpg','page6-bg.jpg','page7-bg.jpg','page8-bg.jpg','page9-bg.jpg','page10-bg.jpg','page11-bg.jpg','page1-percent.png','page1-printer-photo.png','page1-printer-top.png','page2-bookmark2.png'],imgscount = imgsrc.length,imgsnow = 0,imgobj = [];//,'icon.png''arrow.png','titles.png',
+            for(var i = 0;i<imgscount;i++){
+                imgobj[i] = new Image();
+                imgobj[i].onload =function(){
+                    imgsnow++;
+                    if(imgsnow == imgscount){
+                        _this.render();  
+                    }
+                }
+                imgobj[i].onerror =function(){
+                    imgsnow++;
+                    if(imgsnow == imgscount){
+                        _this.render();  
+                    }
+                }   
+                imgobj[i].src = "http://"+window.location.host+window.location.pathname.replace(/[^\/]*$/,"")+"images/"+imgsrc[i];
+
             }
         }, 
         initEvent: function() {
@@ -84,6 +97,10 @@
                     },8000)
                 },4500)
         	});
+            elements.page9book.on('tap', function() {
+                elements.page9.hide();
+                elements.page10.show();
+            });
             elements.page10Input.on('change', function() {
                 // console.log(this.value)
                 // elements.page10Img.attr("src", "file:///"+this.value);
@@ -101,10 +118,14 @@
                 elements.page10tipbox.find('p').width(screenHeight*.7)
                 elements.page10tipbox.show();
             });
+            elements.page10close.on('tap', function() {
+                elements.page10tipbox.hide();
+            });
            
         },
 
         render: function() {
+            $("body").removeClass("hide");
             setTimeout(function() {
                 elements.page1.hide();
                 elements.page2.show();
@@ -115,21 +136,23 @@
             var reader = new FileReader();  
             reader.onload = function (e) { 
                 var dataURL = e.target.result
-                    , canvas = document.querySelector('canvas')
-                    , ctx = canvas.getContext('2d')
+                    , canvas10 =  document.getElementById("page10Canvas")
+                    , canvas11 =  document.getElementById("page11Canvas")
                     , img = new Image()
                     , screenWidth = document.body.clientWidth
                     , screenHeight = document.body.clientHeight;
                 img.onload = function() { 
-                    var square = 320;  
-                    var context = canvas.getContext('2d'); 
-                    context.clearRect(0, 0, square, square); 
-                    alert(screenWidth);
-                    alert(screenHeight);
+                    // var square = 320;  
+                    var context10 = canvas10.getContext('2d'); 
+                    var context11 = canvas11.getContext('2d'); 
                     var imageWidth = screenWidth*.5; 
                     var imageHeight = screenHeight*.35; 
-                    canvas.width = imageWidth; 
-                    canvas.height = imageHeight;
+                    context10.clearRect(0, 0, screenWidth*.5, screenHeight*.35); 
+                    context11.clearRect(0, 0, screenWidth*.54, screenHeight*.38); 
+                    canvas10.width  = screenWidth*.5; 
+                    canvas10.height = screenHeight*.35;
+                    canvas11.width = screenWidth*.54;
+                    canvas11.height = screenHeight*.38;
                     var offsetX = 0; 
                     var offsetY = 0; 
                     // if (this.width > this.height) { 
@@ -141,9 +164,14 @@
                     //     imageWidth = square;  
                     //     offsetY = - Math.round((imageHeight - square) / 2);  
                     // }   
-                    context.drawImage(this, offsetX, offsetY, imageWidth, imageHeight); 
+                    context10.drawImage(this, offsetX, offsetY, screenWidth*.5, screenHeight*.35); 
+                    context11.drawImage(this, offsetX, offsetY, screenWidth*.54, screenHeight*.38); 
                     // var base64 = canvas.toDataURL('image/jpeg',0.5); $('#j_thumb').val(base64.substr(22)); 
-                    $(".page9-photo").addClass("page9-photoAnimation");
+                    $(".page10-photo").addClass("page10-photoAnimation");
+                    setTimeout(function() {
+                        $("#page10").hide();
+                        $("#page11").show();
+                    },3000)
                 }; 
                 img.src = dataURL; 
             };  reader.readAsDataURL(file); 
