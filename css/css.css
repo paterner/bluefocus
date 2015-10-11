@@ -210,25 +210,9 @@ html,body{
 .page4 {
 	background: url(../images/page4-bg.jpg) 0 50% no-repeat;
 	background-size: 100% 100%;
-}
-.page4.page4-photo {
-	animation: page4-photo 3s 4s ease forwards;
-	-webkit-animation: page4-photo 3s 4s ease forwards;
-}
-
-@keyframes page4-photo{
-	0% {opacity: 1}
-	25% {opacity: 0}
-	50% {opacity: 1}
-	75% {transform:translate3d(0,0%,0)}
-	100% {transform:translate3d(0,-100%,0)}
-}
-@-webkit-keyframes page4-photo{
-	0% {opacity: 1}
-	25% {opacity: 0}
-	50% {opacity: 1}
-	75% {transform:translate3d(0,0%,0)}
-	100% {transform:translate3d(0,-100%,0)}
+	transform: translate3d(0,0%,0)
+	transition: transform 2s;
+	-webkit-transition: transform 2s;
 }
 
 .page4 .page4-star{
@@ -250,14 +234,41 @@ html,body{
 	100% {-webkit-transform:scale(1);}
 }
 
+.page4.page4-photo {
+	animation: page4-photo 500ms 4s ease forwards;
+	-webkit-animation: page4-photo 500ms 4s ease forwards;
+}
+
+@keyframes page4-photo{
+	0% {opacity: 1}
+	25% {opacity: 0.5}
+	50% {opacity: 0}
+	75% {opacity: 0.5}
+	100% {opacity: 1}
+}
+@-webkit-keyframes page4-photo{
+	0% {opacity: 1}
+	25% {opacity: 0.5}
+	50% {opacity: 0}
+	75% {opacity: 0.5}
+	100% {opacity: 1}
+}
+
+.page4.page4-fadeout {
+	transform: translate3d(0,-100%,0)
+}
+
 .page5 {
 	background: url(../images/page5-bg.jpg) 0 50% no-repeat;
 	background-size: 100% 100%;
+	transform: translate3d(0,0%,0)
+	transition: transform 2s;
+	-webkit-transition: transform 2s;
+	opacity: 0
 }
-
-.page5.page5-photo {
-	animation: page4-photo 3s 8s ease forwards;
-	-webkit-animation: page4-photo 3s 8s ease forwards;
+.page5.page5-fadein {
+	transform: translate3d(0,-100%,0); 
+	opacity:1;
 }
 
 .page5 .page5-shadow{
@@ -268,8 +279,8 @@ html,body{
 	position: absolute;
 	top: 60%;
 	left: 20%;
-	-webkit-animation: page5-shadow 2s ease;
-	animation: page5-shadow 2s ease;
+	-webkit-animation: page5-shadow 2s 2s ease;
+	animation: page5-shadow 2s 2s ease;
 	opacity: 0;
 }
 @keyframes page5-shadow{
@@ -289,8 +300,8 @@ html,body{
 	top: 48.24%;
 	left: 0;
 	opacity: 0;
-	-webkit-animation: page5-people 2s 1.6s ease forwards;
-	animation: page5-people 2s 1.6s ease forwards;
+	-webkit-animation: page5-people 2s 3.6s ease forwards;
+	animation: page5-people 2s 3.6s ease forwards;
 }
 @keyframes page5-people{
 	0% {opacity: 0;}
@@ -310,8 +321,8 @@ html,body{
 	left: 57.6%;
 	transform:scale(0);
 	-webkit-transform:scale(0);
-	-webkit-animation: page5-heart 1.5s 3s ease forwards;
-	animation: page5-heart 1.5s 3s ease forwards;
+	-webkit-animation: page5-heart 1.5s 5s ease forwards;
+	animation: page5-heart 1.5s 5s ease forwards;
 }
 @keyframes page5-heart{
 	0% {transform:scale(0.2);}
@@ -328,8 +339,8 @@ html,body{
 	background-size: 100% 100%;
 	position: absolute;
 	opacity: 0;
-	-webkit-animation: page5-fireworks 2s 3s linear forwards;
-	animation: page5-fireworks 2s 3s linear forwards;
+	-webkit-animation: page5-fireworks 2s 5s linear forwards;
+	animation: page5-fireworks 2s 5s linear forwards;
 }
 @keyframes page5-fireworks{
 	0% {
@@ -359,14 +370,28 @@ html,body{
 		opacity: 1;
 	}
 }
+
+.page5.page5-photo {
+	animation: page4-photo 500ms 7s ease forwards;
+	-webkit-animation: page4-photo 500ms 7s ease forwards;
+}
+
+.page5.page5-fadeout {
+	transform: translate3d(0,-200%,0); 
+	opacity:0;
+}
 .page6 {
 	background: url(../images/page6-bg.jpg) 0 50% no-repeat;
 	background-size: 100% 100%;
+	transform: translate3d(0,-100%,0)
+	transition: transform 2s;
+	-webkit-transition: transform 2s;
+	opacity:0;
 }
 
-.page6.page6-photo {
-	animation: page4-photo 3s 4s ease forwards;
-	-webkit-animation: page4-photo 3s 4s ease forwards;
+.page6.page6-fadein {
+	transform: translate3d(0,-200%,0); 
+	opacity:1;
 }
 
 .page6 .page6-shadow{
@@ -377,8 +402,8 @@ html,body{
 	position: absolute;
 	top: 60%;
 	left: 33%;
-	-webkit-animation: page6-shadow 2s linear forwards;
-	animation: page6-shadow 2s linear forwards;
+	-webkit-animation: page6-shadow 2s 2s linear forwards;
+	animation: page6-shadow 2s 2s linear forwards;
 }
 @keyframes page6-shadow{
 	0% {
@@ -412,8 +437,8 @@ html,body{
 	left: 12%;
 	z-index: 2;
 	opacity: 0;
-	-webkit-animation: page6-people 2s 1s linear forwards;
-	animation: page6-people 2s 1s linear forwards;
+	-webkit-animation: page6-people 2s 3s linear forwards;
+	animation: page6-people 2s 3s linear forwards;
 }
 @keyframes page6-people{
 	0% {
@@ -457,8 +482,8 @@ html,body{
 	left: 12.8%;
 	z-index: 1;
 	opacity: 0;
-	-webkit-animation: page6-shadow2 2s 1s linear forwards;
-	animation: page6-shadow2 2s 1s linear forwards;
+	-webkit-animation: page6-shadow2 2s 3s linear forwards;
+	animation: page6-shadow2 2s 3s linear forwards;
 }
 @keyframes page6-shadow2{
 	0% {
@@ -485,30 +510,30 @@ html,body{
 	}
 }
 
+.page6.page6-photo {
+	animation: page4-photo 500ms 6s ease forwards;
+	-webkit-animation: page4-photo 500ms 6s ease forwards;
+}
+
+.page6.page6-fadeout {
+	transform: translate3d(0,-300%,0); 
+	opacity:0;
+}
+
 .page7 {
 	background: url(../images/page7-bg.jpg) 0 50% no-repeat;
 	background-size: 100% 100%;
+	transform: translate3d(0,-200%,0)
+	transition: transform 2s;
+	-webkit-transition: transform 2s;
+	opacity:0;
 }
 
-.page7.page7-photo {
-	animation: page7-photo 500ms 4s ease forwards;
-	-webkit-animation: page7-photo 500ms 4s ease forwards;
+.page7.page7-fadein {
+	transform: translate3d(0,-300%,0); 
+	opacity:1;
 }
 
-@keyframes page7-photo{
-	0% {opacity: 1}
-	25% {opacity: 0.5}
-	50% {opacity: 0}
-	75% {opacity: 0.5}
-	100% {opacity: 1}
-}
-@-webkit-keyframes page7-photo{
-	0% {opacity: 1}
-	25% {opacity: 0.5}
-	50% {opacity: 0}
-	75% {opacity: 0.5}
-	100% {opacity: 1}
-}
 .page7 .page7-tree{
 	width: 26.3%;
 	height: 23.76%;
@@ -518,8 +543,8 @@ html,body{
 	top: 0;
 	right: 0;
 	z-index: 3;
-	-webkit-animation: page7-tree 2s linear forwards;
-	animation: page7-tree 2s linear forwards;
+	-webkit-animation: page7-tree 2s 2s linear forwards;
+	animation: page7-tree 2s 2s linear forwards;
 }
 @keyframes page7-tree{
 	0% {transform:scale(1.2);}
@@ -538,8 +563,8 @@ html,body{
 	top: 43.92%;
 	left: 7.2%;
 	z-index: 3;
-	-webkit-animation: page7-people 2s  linear forwards;
-	animation: page7-people 2s  linear forwards;
+	-webkit-animation: page7-people 2s 2s linear forwards;
+	animation: page7-people 2s 2s linear forwards;
 }
 @keyframes page7-people{
 	0% {transform:scale(1.1);}
@@ -550,10 +575,30 @@ html,body{
 	100% {-webkit-transform:scale(1);}
 }
 
+.page7.page7-photo {
+	animation:  page4-photo 500ms 6s ease forwards;
+	-webkit-animation: page4-photo 500ms 6s ease forwards;
+}
+
+.page7.page7-fadeout {
+	transform: translate3d(0,-400%,0); 
+	opacity:0;
+}
+
 .page8 {
 	background: url(../images/page8-bg.jpg) 0 50% no-repeat;
 	background-size: 100% 100%;
+	transform: translate3d(0,-300%,0)
+	transition: transform 2s;
+	-webkit-transition: transform 2s;
+	opacity:0;
 }
+
+.page8.page8-fadein {
+	transform: translate3d(0,-400%,0); 
+	opacity:1;
+}
+
 .page8 .page8-photo1{
 	width: 35.33%;
 	height: 31.44%;
@@ -563,8 +608,8 @@ html,body{
 	top: 49.52%;
 	left: 62%;
 	z-index: 3;
-	-webkit-animation: page8-photo1 3s linear forwards;
-	animation: page8-photo1 3s linear forwards;
+	-webkit-animation: page8-photo1 3s 2s linear forwards;
+	animation: page8-photo1 3s 2s linear forwards;
 }
 @keyframes page8-photo1{
 	0% {
@@ -600,8 +645,8 @@ html,body{
 	top: 76.8%;
 	left: 37.3%;
 	z-index: 2;
-	-webkit-animation: page8-photo2 3s 1s ease-in forwards;
-	animation: page8-photo2 3s 1s ease-in forwards;
+	-webkit-animation: page8-photo2 3s 3s ease-in forwards;
+	animation: page8-photo2 3s 3s ease-in forwards;
 }
 @keyframes page8-photo2{
 	0% {
@@ -636,8 +681,8 @@ html,body{
 	top: 59.34%;
 	left: 16.7%;
 	z-index: 1;
-	-webkit-animation: page8-photo3 3s 2s ease-in forwards;
-	animation: page8-photo3 3s 2s ease-in forwards;
+	-webkit-animation: page8-photo3 3s 4s ease-in forwards;
+	animation: page8-photo3 3s 4s ease-in forwards;
 }
 @keyframes page8-photo3{
 	0% {
@@ -664,10 +709,10 @@ html,body{
 	}
 }
 
-
-
-
-
+.page8.page8-fadeout {
+	transform: translate3d(0,-500%,0); 
+	opacity:1;
+}
 
 .page10 {
 	background: url(../images/page10-bg.jpg) no-repeat;

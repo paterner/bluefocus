@@ -5,7 +5,11 @@
 		bookmark: $("#bookmark"),
 		page3: $("#page3"),
 		page3Star: $("#page3-star"),
-		page4: $("#page4"),
+        page4: $("#page4"),
+		page5: $("#page5"),
+        page6: $("#page6"),
+        page7: $("#page7"),
+        page8: $("#page8"),
         page9Input: $("#sPhoto"),
         page10Img: $("#page10-photo"),
 	},
@@ -34,6 +38,41 @@
         	elements.page3Star.on('tap',function(){
         		elements.page3.hide();
         		elements.page4.show();
+                elements.page5.show();
+                elements.page6.show();
+                elements.page7.show();
+                elements.page8.show();
+                setTimeout(function(){
+                    elements.page4.removeClass('page4-photo').addClass('page4-fadeout');
+                    elements.page5.addClass('page5-fadein')
+                    elements.page5.find('div').eq(0).addClass('page5-shadow');
+                    elements.page5.find('div').eq(1).addClass('page5-people');
+                    elements.page5.find('div').eq(2).addClass('page5-heart');
+                    elements.page5.find('div').eq(3).addClass('page5-fireworks');
+                    elements.page5.addClass('page5-photo');
+                    setTimeout(function(){
+                        elements.page5.addClass('page5-fadeout');
+                        elements.page6.addClass('page6-fadein');
+                        elements.page6.find('div').eq(0).addClass('page6-shadow');
+                        elements.page6.find('div').eq(1).addClass('page6-people');
+                        elements.page6.find('div').eq(2).addClass('page6-shadow2');
+                        elements.page6.addClass('page6-photo');
+                        setTimeout(function(){
+                            elements.page6.addClass('page6-fadeout');
+                            elements.page7.addClass('page7-fadein');
+                            elements.page7.find('div').eq(0).addClass('page7-tree');
+                            elements.page7.find('div').eq(1).addClass('page7-people');
+                            elements.page7.addClass('page7-photo');
+                            setTimeout(function(){
+                                elements.page7.addClass('page7-fadeout');
+                                elements.page8.addClass('page8-fadein');
+                                elements.page8.find('div').eq(0).addClass('page8-photo1');
+                                elements.page8.find('div').eq(1).addClass('page8-photo2');
+                                elements.page8.find('div').eq(2).addClass('page8-photo3');
+                            },8000)
+                        }, 8000)    
+                    },8000)
+                },4500)
         	});
             elements.page9Input.on('change', function() {
                 // console.log(this.value)
@@ -42,6 +81,7 @@
 
                 _this.drawOnCanvas(file);
             })
+           
         },
 
         render: function() {
