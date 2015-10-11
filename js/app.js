@@ -10,20 +10,26 @@
         page6: $("#page6"),
         page7: $("#page7"),
         page8: $("#page8"),
-        page9Input: $("#sPhoto"),
+        page9: $("#page9"),
+        page10: $("#page10"),
+        page10Input: $("#sPhoto"),
         page10Img: $("#page10-photo"),
+        page10tip: $(".page10-tip"),
+        page10tipbox: $(".page10-tip-box"),
+        page10tipbg: $(".page10-tip-bg"),
 	},
 
 	app = {
 		init: function() {      
             this.initEvent();   
-            this.loading();     
+            // this.loading();   
+            // this.render();  
         },
         loading: function() {   
             function a() {      
                 d++, d == 5 && app.render();
             }
-            for (var b = ["images/page1-bg.jpg", "images/page1-printer-top.png", "images/page1-printer-bottom.png", "images/page1-printer-photo.png", "images/page1-percent.png"], c = b.length, d = 0, e = 0; c > e; e++) {
+            for (var b = ["images/page1-bg.jpg", "images/page1-printer-top.png", "images/page1-printer-photo.png", "images/page1-percent.png"], c = b.length, d = 0, e = 0; c > e; e++) {
                 var g = new Image();
                 g.onload = a;
                 g.src = b[e];
@@ -51,7 +57,7 @@
                     elements.page5.find('div').eq(3).addClass('page5-fireworks');
                     elements.page5.addClass('page5-photo');
                     setTimeout(function(){
-                        elements.page5.addClass('page5-fadeout');
+                        elements.page5.removeClass('page5-fadein').addClass('page5-fadeout');
                         elements.page6.addClass('page6-fadein');
                         elements.page6.find('div').eq(0).addClass('page6-shadow');
                         elements.page6.find('div').eq(1).addClass('page6-people');
@@ -69,26 +75,40 @@
                                 elements.page8.find('div').eq(0).addClass('page8-photo1');
                                 elements.page8.find('div').eq(1).addClass('page8-photo2');
                                 elements.page8.find('div').eq(2).addClass('page8-photo3');
+                                setTimeout(function() {
+                                    elements.page8.hide();
+                                    elements.page9.show();
+                                }, 8000); 
                             },8000)
                         }, 8000)    
                     },8000)
                 },4500)
         	});
-            elements.page9Input.on('change', function() {
+            elements.page10Input.on('change', function() {
                 // console.log(this.value)
                 // elements.page10Img.attr("src", "file:///"+this.value);
                 var file = this.files[0]; 
 
                 _this.drawOnCanvas(file);
-            })
+            });
+            elements.page10tip.on('tap', function() {
+                var screenWidth = document.body.clientWidth
+                    , screenHeight = document.body.clientHeight;
+                elements.page10tipbg.css({
+                    height: screenHeight*.8,
+                    width: screenWidth*.9,
+                });
+                elements.page10tipbox.find('p').width(screenHeight*.7)
+                elements.page10tipbox.show();
+            });
            
         },
 
         render: function() {
-            // setTimeout(function() {
-            //     elements.page1.hide();
-            //     elements.page2.show();
-            // }, 3000); 
+            setTimeout(function() {
+                elements.page1.hide();
+                elements.page2.show();
+            }, 3000); 
         },
 
         drawOnCanvas: function(file) { 
@@ -98,16 +118,16 @@
                     , canvas = document.querySelector('canvas')
                     , ctx = canvas.getContext('2d')
                     , img = new Image()
-                    , srceenWidth = document.body.clientWidth
-                    , srceenHeight = document.body.clientHeight;
+                    , screenWidth = document.body.clientWidth
+                    , screenHeight = document.body.clientHeight;
                 img.onload = function() { 
                     var square = 320;  
                     var context = canvas.getContext('2d'); 
                     context.clearRect(0, 0, square, square); 
-                    alert(srceenWidth);
-                    alert(srceenHeight);
-                    var imageWidth = srceenWidth*.5; 
-                    var imageHeight = srceenHeight*.35; 
+                    alert(screenWidth);
+                    alert(screenHeight);
+                    var imageWidth = screenWidth*.5; 
+                    var imageHeight = screenHeight*.35; 
                     canvas.width = imageWidth; 
                     canvas.height = imageHeight;
                     var offsetX = 0; 
